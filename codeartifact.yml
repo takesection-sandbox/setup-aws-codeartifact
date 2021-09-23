@@ -1,0 +1,14 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  Domain:
+    Type: AWS::CodeArtifact::Domain
+    Properties: 
+      DomainName: <YOUR Domain (e.g. myDomain)>
+  MavenRepository:
+    Type: AWS::CodeArtifact::Repository
+    Properties: 
+      DomainName: 
+        Fn::GetAtt:
+          - Domain
+          - Name
+      RepositoryName: <YOUR Repo name (e.g. myRepo)>
